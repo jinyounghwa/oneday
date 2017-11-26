@@ -78,6 +78,8 @@ body > div:not([class]) {min-height: 200px}
 
 @media (min-width: 600px) {
 
+.box1	{line-height: 400px}    
+
 .box2	{line-height: 384px}
 
 .box3	{line-height: 384px}
@@ -102,4 +104,15 @@ body > div:not([class]) {min-height: 200px}
 
 }
 
+.boxA::after {
+    content:"";
+    display: block;
+    clear:both
+}
+.box1{float: left;
+    width: 33.3333%}
+.box2{float: left;
+    width: 33.3333%}
+.box3{float: left;
+    width: 33.3333%}
 
