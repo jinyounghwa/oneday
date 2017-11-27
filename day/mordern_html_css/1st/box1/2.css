@@ -103,14 +103,16 @@ body > div:not([class]) {min-height: 200px}
 	{line-height: 384px}
 
 }
-
 .boxA::after {
-    content:"";
+    content: "";
     display: block;
-    clear:both
+    clear: both
 }
-.box2{float: left;
-    width: 70%}
-.box3{float: left;
-    width: 30%}
-
+.box2 {
+    float: left;
+    width:300px;
+}
+.box3 {
+    float: left;
+    width:50%
+}
