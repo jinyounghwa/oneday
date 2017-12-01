@@ -134,16 +134,34 @@ body{
     list-style: none
 }
 .recommend li a{display: block;
-        padding: 5px;
+        margin-bottom: 10px;
+        padding: 0;
         color: #000000;
         font-size:14px;
         text-decoration: none}
-.recommend li a:hover {background-color: #eeeeee}
+.recommend li a:hover {background-color: #eeeeee;
+                        opacity: 0.8}
 .recommend h1{margin-top: 0;
     margin-bottom: 10px;
     border-bottom: dotted 2px #dddddd;
     color:#666666;
     font-size: 18px}
+.recommend img {width:100%;
+                height: auto;
+                border: none;
+                vertical-align: bottom}
+.recommend .text {padding:5px 10px;
+                background-color: rgba(0,0,0,0.5);
+                color:#ffffff}
+/*추천 기사 메뉴의 글자를 중첩하는 설정*/
+.recommend a {position: relative}
+.recommend .text {position: absolute;
+                bottom: 0;
+                left: 0;
+                width:100%;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box}
 /*인기기사 메뉴*/
 .popular ul{margin:0;
     padding: 0;
@@ -151,7 +169,8 @@ body{
 }
 .popular li a{display: block;
         padding: 5px;
-        color: #000000;
+        border-bottom: dotted 1px #dddddd;
+        color: #2288bb;
         font-size:14px;
         text-decoration: none}
 .popular li a:hover {background-color: #eeeeee}
@@ -161,6 +180,19 @@ body{
     color:#666666;
     font-size: 18px}
 .popular li a img {border: none}
+.popular a::after {content: "";
+                    display: block;
+                    clear: both}
+.popular img {float:left;
+                width:60px}
+.popular .text {float: none;
+                width:auto;
+                margin-left: 68px;
+                padding-left: 15px
+}
+.popular span {display: block;
+            color:#666666;
+            font-size: 12px;}
 /*box5위에 테두리삽입*/
 .box5 {border-top: solid 1px #dddddd}
 /*박스 위 애라 간격*/
