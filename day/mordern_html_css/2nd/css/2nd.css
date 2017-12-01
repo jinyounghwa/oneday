@@ -4,10 +4,14 @@ body{
 }
 
 .site h1 a {
-    color: #000000;
+    color: #83a4a8;
     text-decoration: none
 }
-.site h1 {font-size: 30px}
+.site h1 {margin: 0;
+        font-size: 30px;
+        font-family: 'paytone One',sans-serif;
+        font-weight: normal
+}
 
 
 .story h1 {margin-top:0;
@@ -71,8 +75,43 @@ body{
             font-size:36px;}
 .story p {margin-top: 0;
         margin-bottom: 20px;}
+/*기사의 소제목*/
+.story h2 { margin-top:40px;
+            padding-left: 10px;
+            border-left: solid 10px #7cbac1;
+            font-weight: normal
+            }
+
+/*기사의 작성일*/
+.storyinfo {margin-top: -10px;
+    margin-bottom: 20px}
+.storyinfo  i {margin-right: 5px;
+            color: #aaaaaa;
+            font-size: 20px;
+}
+/*기사의 분류*/
+.story-cat {margin-bottom:25px}
+.story-cat ul{margin: o;
+            padding: 0;
+            list-style: none}
+.story-cat li a {display:block;
+                margin-right: 5px;
+                padding: 3px 5px;
+                border-radius: 2px;
+                background-color: #75dbe7;
+                color: #ffffff;
+                font-size: 12px;
+                text-decoration: none}
+.story-cat li a:hover {background-color: #94ecf6}
+.story-cat ul::after{content: "";
+                    display: block;
+                    clear: both}
+.story-cat li {float: left;
+                width: auto}
 /*사이드메뉴*/
 .sidemenu {margin-bottom: 30px}
+.sidemenu i {margin-right: 5px;
+            color:#888888}
 .sidemenu ul{margin:0;
             padding: 0;
             list-style: none
@@ -121,6 +160,7 @@ body{
     border-bottom: dotted 2px #dddddd;
     color:#666666;
     font-size: 18px}
+.popular li a img {border: none}
 /*box5위에 테두리삽입*/
 .box5 {border-top: solid 1px #dddddd}
 /*박스 위 애라 간격*/
