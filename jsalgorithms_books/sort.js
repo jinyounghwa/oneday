@@ -53,6 +53,82 @@ function ArrayList() {
             array[j] = temp;
         }
     }
+    this.mergeSort = function(){
+        array = mergeSort(array);
+    }
+    var mergeSortRec = function(array){
+        var length = array.length;
+        if(length ===1){
+            return array;
+        }
+        var mid = Math.floor(length /2),
+        left = array.slice(0,mid),
+        right = array.slice(mid,length);
+        return mergeSortRec(mergeSortRec(left), mergeSortRec(right));
+    }
+    var merge = function(left, right){
+        var result = [], il=0,ir=0;
+
+        while(il<left.length && ir < right.length){
+            if(left[il] < right[ir]){
+                result.push(left[i++]);
+            }else{
+                result.push(right[ir++]);
+            }
+        }
+        while(il < left.length){
+            result.push(left[il++]);
+        }
+        while(ir <right.length){
+            result.push(ir++);
+        }
+        return result;
+    }
+    this.quickSort = function(){
+        quick(array,0,array.length-1);
+    };
+    var quick = function(array, left, right){
+        var index;
+        if(array.length > 1){
+            index = parition(array, left, right);
+            if(left < index -1){
+                quick(array, left, index-1);
+            }
+            if(index < right){
+                quick(array, index, right);
+            }
+        }
+
+    }
+    var partition = function(array, left, right) {
+
+        var pivot = array[Math.floor((right + left) / 2)],
+            i = left,
+            j = right;
+
+        console.log('pivot is ' + pivot + '; left is ' + left + '; right is ' + right);
+
+        while (i <= j) {
+            while (array[i] < pivot) {
+                i++;
+                console.log('i = ' + i);
+            }
+
+            while (array[j] > pivot) {
+                j--;
+                console.log('j = ' + j);
+            }
+
+            if (i <= j) {
+                console.log('swap ' + array[i] + ' with ' + array[j]);
+                swap(array, i, j);
+                i++;
+                j--;
+            }
+        }
+
+        return i;
+    };
 }
 
 function createNonSortedArray(size){
@@ -71,3 +147,4 @@ var array = createNonSortedArray(5);
 console.log(array.toString());
 array.selectionSort();
 console.log(array.toString());
+
