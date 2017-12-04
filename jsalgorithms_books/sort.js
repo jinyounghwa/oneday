@@ -16,11 +16,41 @@ function ArrayList() {
         var length = array.length;
 
         for(var i=0; i<length; i++){
-            for(var j=0; j<length-1;j++) {
+            for(var j=0; j<length-i;j++) {
                 if(array[j] > array[j+1]){
                     swap(j,j+1);
                 }
             }
+        }
+    }
+    this.selectionSort = function()  {
+        var length = array.length,
+        indexMin;
+
+        for(var i=0; i<length; i++){
+            indexMin =i;
+            for (var j=i; j<length-1;j++){
+                if(array[indexMin] > array[j]){
+                    indexMin =j;
+                }
+            }
+            if(i!== indexMin){
+                swap(i, indexMin);
+            }
+        }
+
+    }
+    this.insertionSort = function() {
+        var length = array.length,j,temp;
+
+        for(var i=1; i < length; i++){
+            j=i;
+            temp = array[i];
+            while(j>0 && array[j-1] > temp){
+                array[j] = array[j-1];
+                j--;
+            }
+            array[j] = temp;
         }
     }
 }
@@ -32,7 +62,12 @@ function createNonSortedArray(size){
     }
     return array;
 }
+// var array = createNonSortedArray(5);
+// console.log(array.toString());
+// array.bubbleSort();
+// console.log(array.toString());
+
 var array = createNonSortedArray(5);
 console.log(array.toString());
-array.bubbleSort();
+array.selectionSort();
 console.log(array.toString());
