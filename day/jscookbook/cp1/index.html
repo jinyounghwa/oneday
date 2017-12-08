@@ -2,12 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
-    <div class="result"></div>
-    <script src="3.js"></script>
+    <table id="table1">
+        <tr>
+            <td>Washington</td><td>145</td>
+        </tr>
+        <tr>
+            <td>Oregon</td><td>233</td>
+        </tr>
+        <tr>
+            <td>Missouru</td><td>833</td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+    var sum = 0;
+    //querySelector를 사용해 두 번째 테이블 셀 모두 찾기
+    var cells = document.querySelectorAll("td + td");
+     
+    for (var i =0; i <cells.length; i++)
+        sum += parseFloat(cells[i].firstChild.data);
+
+    //더한값을 테으블 끝에 넣기
+    var newRow = document.createElement("tr");
+    
+    //첫번째 셀
+    var firstCell = document.createElement("td");
+    var firstCellText = document.createTextNode("Sum:");
+    firstCell.appendChild(firstCellText);
+    newRow.appendChild(firstCell);
+
+    //두번째 셀에 표시
+    var seoundCell = document.createElement("td");
+    var seoundCellText = document.createTextNode(sum);
+    seoundCell.appendChild(seoundCellText);
+    newRow.appendChild(seoundCell);
+
+    //테이블에 행 추가
+    document.getElementById("table1").appendChild(newRow);
+    </script>
 </body>
 </html>
