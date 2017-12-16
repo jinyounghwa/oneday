@@ -5,7 +5,7 @@ document.getElementById('validate').addEventListener('click', function(event){
 
     var elms = document.getElementById("picker");
     var elemArray = new Object();
-   
+    console.log(elemArray);
     for (var i = 0; i <elms.length; i++) {
         if(elms[i].type == "text"){
             elemArray[elms[i].id] = elms[i].value;
@@ -13,9 +13,10 @@ document.getElementById('validate').addEventListener('click', function(event){
         }
         var str ='';
         Object.keys(elemArray).forEach(function(key){
+           // console.log(elemArray);
             var value = elemArray[key];
             str += key + '->' + value + '<br />';
-           
+            
         });
         document.getElementById("result").innerHTML = str;
     }
