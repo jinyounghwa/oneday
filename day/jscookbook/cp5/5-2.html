@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <img src="first.jpg" alt="image descriotion">
+        <img src="secound.jpg" alt="image descriotion">
+        <img src="third.jpg" alt="image descriotion">
+    </p>
+
+    <script>
+        var imgs = document.getElementsByTagName('img');
+        console.log(imgs.length);
+
+        var p = document.createElement("p");
+        var img = document.createElement("img");
+
+        img.src = "some.jpg";
+        p.appendChild(img);
+
+        var paras = document.getElementsByTagName('p');
+        paras[0].parentNode.appendChild(p);
+
+        console.log(imgs.length);
+    </script>
+</body>
+</html>
