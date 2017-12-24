@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="target">
+        <p>
+            There is a language  'little konw', <br />
+            lovers claim it as their own.
+        </p>
+        <p>
+            There is a language  'little konw', <br />
+            lovers claim it as their own.
+        </p>
+        <p>
+            There is a language  'little konw', <br />
+            lovers claim it as their own.
+        </p>
+        <p>
+            There is a language  'little konw', <br />
+            lovers claim it as their own.
+        </p>
+    </div>
+    <script>
+    //웹페이지에 콘텐츠 추가하는 예시
+
+    //getElementById를 사용해 div 요소에 접근 
+    var div = document.getElementById("target");
+
+    //문단 텍스트 구하기
+    var txt = prompt("Enter new paragraph text");
+
+    //getElementByTagName과 컬렉션 인덱스를 사용해 첫 번째 문단에 접근
+    var oldPara = div.getElementsByTagName("p")[0];
+
+    //text노드 만들기
+    var txtNode = document.createTextNode(txt);
+
+    //새로운 문단 만들기
+    var para = document.createElement("p");
+
+    //텍스트를 문단에 추가, 새로운 문단 삽입
+
+    para.appendChild(txtNode);
+    div.insertBefore(para,oldPara);
+
+    </script>
+</body>
+</html>
