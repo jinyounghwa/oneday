@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>요소 추가하고 삭제하기</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            padding: 5px;
+            border:  1px solid #ccc;
+        }
+        th:nth-child(2n+1){
+            background-color: #eeffee;
+        }
+    </style>
+</head>
+<body>
+    <table id="mixed">
+        <tr><th>Value One</th><th>Value two</th><th>Value three</th></tr>
+    </table>
+<div id="result"></div>
+
+    <script>
+        var values = new Array(3);
+        values[0] = [123.45, "apple", true];
+        values[1] = [65, "banana", false];
+        values[2] = [1034.99, "cherry", false];
+
+        var mixed = document.getElementById("mixed");
+        var tbody = document.createElement("tbody");
+
+        for(var i = 0; i< values.length; i++) {
+            var tr = document.createElement("tr");
+            //내부 루프에서 셀 배열 처리 td를 생성하고 text를 생성한 다음 추가
+            for(var j = 0; j < values[i].length; j++){
+                var td = document.createElement("td");
+                var txt = document.createTextNode(values[i][j]);
+                td.appendChild(txt);
+                tr.appendChild(td);
+            }
+            //이벤트 헨들러 추가
+            tr.onclick = prunerow;
+            tbody.appendChild(tr);
+            mixed.appendChild(tbody);
+        }
+    function prunerow (){
+        //행 삭제
+        var parent = this.parentNode;
+        var oldrow = parent.removeChild(this);
+
+        //삭제된 행 데이터의 데이터 문자열
+        var datastring = "";
+        for (var i = 0; i<oldrow.childNodes.length; i++){
+            var cell = oldrow.childNodes[i];
+            datastring += cell.firstChild.data + " ";
+        }
+        //메시지 출력
+        var msg = document.createTextNode("removed " + datastring);
+        var p = document.createElement("p");
+        p.appendChild(msg);
+        document.getElementById("result").appendChild(p);
+    }
+    </script>
+</body>
+</html>
