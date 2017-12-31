@@ -154,3 +154,86 @@ const f = v=>{
 };
 let i = 1000;
 while(i--) backRun(f, console.log, 100000);
+
+//breaking block - 프로그램을 중도에 멈췄다가 다시 실행할 수 있음
+const infinity = (function*(){
+    let i = 0;
+    while(true) yield i++;
+    })();
+console.log(infinity.next());
+console.log(infinity.next());
+
+
+//time slicing manual using generator
+const loop = function*(n, f, slice = 3){
+    let i = 0, limit = 0;
+    while(i < n){
+        if(limit++ < slice) f(i++);
+        else{
+            limit = 0;
+            yield;
+        }
+    }
+};
+const executor =iter=>{
+    const runner =_=>{
+        iter.next();
+        requestAnimationFrame(runner);
+    };
+    requestAnimationFrame(runner);
+};
+
+//generator + async + executor
+const profile = function*(end, next, r){
+    const userid = yield $.post('member.php', {r}, next);
+    let added = yield $.post('detail.php', {userid}, next);
+    added = added.split(",");
+    end({userid, nick:added[0], thumb:added[1]});
+};
+const executor = (end, gene,...arg)=>{
+    const next =v=>iter.next(v);
+    const iter = gene(end, next,...arg);
+    iter.next();
+};
+generator + async + executor
+executor(profile, console.log, 123);
+
+//프라미스는 then을 호출해야 결과를 얻는다.
+let result;
+const promise = new Promise(r=>$.post(url1, data1, r));
+promise.then(v=>{
+    result = v;
+});
+const promise1 = new Promise(r=>$.post(url1, data1, r));
+const promise2 = new Promise(r=>$.post(url2, data2, r));
+    promise1.then(result=>{
+        promise2.then(v=>{
+            result.nick = v.nick;
+            report(result);
+    });
+});
+//generator + promise
+const profile = function*(end, r){
+    const userid = yield new Promise(res=>$.post('member.php', {r}, res));
+    let added = yield new Promise(res=>$.post('detail.php', {userid}, res));
+    added = added.split(",");
+    end({userid, nick:added[0], thumb:added[1]});
+};
+const executor = (gene, end, ...arg)=>{
+    const iter = gene(end, ...arg);
+    const next = ({value, done}) =>{
+        if(!done) value.then(v=>next(iter.next(v)));
+    };
+    next(iter.next());
+};
+executor(profile, console.log, 123);
+
+
+//await promise = sync
+const profile = async function(end, r){
+    const userid = await new Promise(res=>$.post('member.php', {r}, res));
+    let added = await new Promise(res=>$.post('detail.php', {userid}, res));
+    added = added.split(",");
+    end({userid, nick:added[0], thumb:added[1]});
+};
+profile(console.log, 123);
