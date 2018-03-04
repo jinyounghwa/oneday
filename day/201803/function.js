@@ -10,3 +10,4 @@ console.log(add(1));//2
 
 var pickFirst = new Function("..args","return args[0]");
 console.log(pickFirst(1,2));
+

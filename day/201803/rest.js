@@ -35,3 +35,13 @@ function checkArgs(...args){
     console.log(args[1], arguments[1]);
 }
 checkArgs("a","b");
+
+//배열에서 가장 큰 값을 찾으려고 할 때
+
+let values = [25, 50, 75, 100];
+console.log(Math.max(...values));
+
+//Math.max에서 가장 작은 값이 0 이길 원한다고 할 때 별도의 인자를 전달 하여 비교 할 수 있음
+
+let values1 = [-25, -50, -100];
+console.log(Math.max(...values1, 0));
