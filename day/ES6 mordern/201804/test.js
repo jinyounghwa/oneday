@@ -29,3 +29,18 @@ var myObject = {};
 object.assign(myObject, EventTarget.prototype);
 
 myObject.emit("somethintChanged");
+
+//Object.assingn()은 다수의 공급자를 받고 수신자는 순차적으로 프로퍼티를 받는다. 첫번째 공급자를 받은 후 
+//두번째 수신자가 덮어 쓸 수 있다는 소리다.
+
+var recever = {};
+Object.assign(recever,{
+    type: "js",
+    name : "file.js"
+},
+{
+    type : "css"
+}
+);
+console.log(recever.type); //"css"; js가 아니라 두번째로 덮어 써 져서 css 다
+console.log(recever.name); //"file.js";
