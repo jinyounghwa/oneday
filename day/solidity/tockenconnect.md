@@ -21,3 +21,6 @@ https://nethereum.readthedocs.io/en/latest/introduction/web3/
 
 ABI decoding
 https://github.com/ConsenSys/abi-decoder
+
+Solidity Parser in Javascript
+https://github.com/ConsenSys/solidity-parser
