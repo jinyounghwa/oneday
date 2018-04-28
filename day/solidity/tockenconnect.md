@@ -18,3 +18,6 @@ https://wiki.parity.io/
 
 ABI encoding / decoding 
 https://nethereum.readthedocs.io/en/latest/introduction/web3/
+
+ABI decoding
+https://github.com/ConsenSys/abi-decoder
