@@ -14,3 +14,7 @@ https://github.com/svenpohl/snippets_solidity
 
 
 https://wiki.parity.io/
+
+
+ABI encoding / decoding 
+https://nethereum.readthedocs.io/en/latest/introduction/web3/
