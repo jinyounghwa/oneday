@@ -31,3 +31,10 @@ https://github.com/bear2u/til/blob/master/blockchain/DAPP/erc20.md
 
 ERC20 Tokens
 https://github.com/furqansiddiqui/erc20-php
+
+
+truffle 
+https://steemkr.com/jjangjjangman/@dimens/1-erc20
+
+ELP-ERC20
+https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
