@@ -35,7 +35,7 @@ https://github.com/furqansiddiqui/erc20-php
 truffle 
 https://steemkr.com/jjangjjangman/@dimens/1-erc20
 
-ELP-ERC20
+ELP-ERC20 (이거 꼭 보세요)
 https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
 
 
@@ -61,6 +61,6 @@ http://api.etherscan.io/api?module=account&action=tokentx&address=0x4e83362442b8
 
  function transfer(address _to, uint256 _value) returns (bool success) {…}
 
-
+(이것도 꼭 보세요)
  https://nethereum.readthedocs.io/en/latest/Nethereum.Workbooks/docs/nethereum-gettingstard-smartcontrats/
 
