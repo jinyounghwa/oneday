@@ -24,3 +24,4 @@ outputInfo({type, name} = node);
 
 console.log(type);
 console.log(name);
+  
