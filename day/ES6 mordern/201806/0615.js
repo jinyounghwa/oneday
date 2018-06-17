@@ -1,4 +1,4 @@
-//super 참조를 통한 프로토타입 접근
+ //super 참조를 통한 프로토타입 접근
 let person = {
     getGreeting(){
         return "Hello";
