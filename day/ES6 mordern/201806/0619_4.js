@@ -17,5 +17,19 @@ let obj = new MyObject();
 
 console.log(obj instanceof MyObject);
 
+function SpeciaNumber(){
+    //..
+}
 
+Object.defineProperty(SpeciaNumber,Symbol.hasInstance,{
+    value : function(v) {
+        return (v instanceof Number) && (v >= 1 && v <=100);
+    }
+})
+
+let two = new Number(2);
+    zero = new Number(0);
+
+console.log(two instanceof SpeciaNumber);
+console.log(zero instanceof SpeciaNumber);
 
