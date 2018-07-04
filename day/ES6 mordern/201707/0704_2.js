@@ -39,3 +39,5 @@ console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
+
+//이거 값 제대로 안나옴.. "repeat" 가 문제인듯
