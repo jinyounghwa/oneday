@@ -18,8 +18,8 @@ function *createNumberIterator(){
     return 3;
 }
 
-function *createRepeateingIterator(count){
-    for(let i = 0; i < count; i++) {
+function *createRepeatingIterator(count) {
+    for (let i=0; i < count; i++) {
         yield "repeat";
     }
 }
@@ -27,7 +27,7 @@ function *createRepeateingIterator(count){
 function *createCombinedIterator(){
     let result = yield *createNumberIterator();
     yield result;
-    yield *createRepeateingIterator();
+    yield *createRepeatingIterator(result);
 }
 
 var iterator = createCombinedIterator();
@@ -40,4 +40,3 @@ console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
 
-//이거 값 제대로 안나옴.. "repeat" 가 문제인듯
