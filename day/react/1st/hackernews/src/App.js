@@ -20,11 +20,44 @@ const list = [
   },
 ];
 
+function isSearched(searchTerm) {
+  return function(item) {
+    //조건에 따라 true,false
+    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  }
+}
+
 class App extends Component{
+  onSearchChange(event){
+    this.setState({searchTerm:event.target.value});
+  }
+  constructor(props){
+    super(props);
+    this.state = {
+      list : list,
+      searchTerm:``,
+    };
+    this.onDisminss = this.onDisminss.bind(this);
+  }
+  onDisminss(id) {
+    const isNotId = item => item.objectID !==id;
+    const updatedList = this.state.list.filter(isNotId);
+    this.setState({list : updatedList});
+  }
+  onSearchChange() {
+
+  }
   render() {
+      const { searchTerm, list} = this.state;
       return (
       <div className="App">
-        {list.map(item =>
+        <form>
+          <input type="text" 
+                 value={searchTerm}
+                 onChange={this.onSearchChange}
+          />
+        </form>
+        {list.filter(isSearched(this.state.searchTerm)).map(item =>
             <div key={item.objectID}>
             <div>
               <span>
@@ -33,6 +66,12 @@ class App extends Component{
               <span>{item.author}</span>
               <span>{item.num_comments}</span>
               <span>{item.points}</span>
+              <span>
+                <button
+                  onClick={()=>this.onDisminss(item.objectID)}
+                  type="button"
+                >dissmiss</button>
+              </span>
             </div>
             </div>
         )}
