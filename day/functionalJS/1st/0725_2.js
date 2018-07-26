@@ -16,6 +16,10 @@ function filter(list, predicate) {
     }
     return new_list;
 }
+function log_length(value){
+    console.log(value.length);
+    return value;
+}
 
 function map(list, iteratee) {
     var new_list =[];
@@ -24,13 +28,55 @@ function map(list, iteratee) {
     }
     return new_list;
 }
-console.log(log_length(
-    map(filter(users, u => u.age < 30, u => u.age))
-));
 
-console.log(log_length(
-    map(filter(users, u => u.age >=30), u=>u.age)
-));
+var ages = map(filter(users,function(user){
+    return user.age < 30;
+}),
+    function(user) {
+        return user.age;
+    }
+)
+console.log(log_length(map(filter(users, u=> u.age < 30), u=> u.age)));
+
+console.log(log_length(map(filter(users, u=> u.age >=30), u => u.age)));
 
 var under_30 = u=> u.age < 30;
 var over_30 = u=> u.age >=30;
+
+console.log(log_length(
+    map(filter(users, under_30), u=>u.age)
+));
+
+console.log(log_length(
+    map(filter(users, over_30), u=>u.age)
+));
+
+var ages = list => map(list, v=>v.age);
+var names = list => map(list, v=>v.age);
+
+console.log(log_length(ages(filter(users,under_30))));
+console.log(log_length(names(filter(users,over_30))));
+
+var bvalues = key => list => map(list, v=> v[key]);
+var ages = bvalues('age');
+var names = bvalues('name');
+
+function bvalues(key){
+    return function(list) {
+        return map(list, function(v){return v[key]});
+    }
+}
+
+var ages = bvalues('age');
+var names = bvalues('name');
+var under_30 = function(u){return u.age < 30};
+var over_30 = function(u){return u.age>=30};
+
+console.log(log_length(ages(filter(users,under_30))));
+console.log(log_length(names(filter(users, over_30))));
+
+function bvalues(key){
+    var value = bvalue(key);
+    return function(list) {return map(list, value);}
+}
+
