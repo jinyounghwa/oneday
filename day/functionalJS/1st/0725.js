@@ -7,6 +7,27 @@ var users = [
     {id:6, name:"JM", age:32},
     {id:7, name:"HI", age:24},
 ]
+
+var users2 = [
+    new User(1,"ID",32),
+    new User(2,"HA",25),
+    new User(3,"BJ",32),
+    new User(4,"PJ",28),
+    new User(5,"JE",27),
+    new User(6,"JM",32),
+    new User(7,"HI",24)
+]
+function User(id, name, age){
+    this.getId = function(){
+        return id;
+    };
+    this.getName = function(){
+        return name;
+    }
+    this.getAge = function(){
+        return age;
+    }
+}
 function filter(list, predicate) {
     var new_list =[];
     for (var i = 0, len = list.length; i < len; i++){
@@ -42,3 +63,17 @@ var names = map(user_over_30, function(user){
     return user.name;
 })
 console.log(names);
+
+console.log(
+    map(
+        filter(users, function(u){return u.age >=30}),
+        function(u) {return u.name}
+    )
+)
+
+console.log(
+    map(
+        filter(users2, function(u){return u.getAge() > 30}),
+        function(u){return u.getName();}
+    )
+)
