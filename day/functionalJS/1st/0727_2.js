@@ -146,3 +146,61 @@ console.log(_filter([1,2,3,4], function(val, idx){
 console.log(_filter([1,2,3,4], function(val, idx){
     return idx % 2 ==0;
 }))
+
+_identify = function(v) {return v;}
+
+var a = 10; 
+
+console.log(_identify(a));
+
+console.log(_filter([true,0,10,'a',false,null],_identify));
+
+_some = function(list) {
+    return !!_find(list,_identify);
+};
+_every = function(list){
+    return _filter(list, _identify).length == list.length
+};
+console.log(_some([0,null,2]));
+console.log(_some([0,null,false]));
+
+console.log(_every([0,null,2]));
+console.log(_every([{},true,2]));
+
+//연산자 대신 함수로
+
+function not(v) {return !v;}
+function beq(a) {
+    return function(b){
+        return a===b;
+    }
+}
+// _some = function(list) {
+//     return !!_find(list, _identify);
+// }
+// _every = function(list){
+//     return beq(-1)(_findIndex(list, not))
+// }
+// console.log(_some([0,null,2]));
+// console.log(_some([0,null,false]));
+
+// console.log(_every([0,null,2]));
+// console.log(_every([{},true,2]));
+
+function positive(list) {
+    return _find(list, _identify)
+}
+function negativeIndex(list) {
+    return _findIndex(list,not);
+}
+_some = function(list) {
+    return not(not(positive(list)));
+}
+_every = function(list) {
+    return beq(-1)(negativeIndex(list));
+}
+console.log(_some([0,null,2]));
+console.log(_some([0,null,false]));
+
+console.log(_every([0,null,2]));
+console.log(_every([{},true,2]));
