@@ -1,0 +1,5 @@
+# 인텔리제이 폴더 무시
+
+/day/functionalJS/.idea
+
+day/.idea/workspace.xml
