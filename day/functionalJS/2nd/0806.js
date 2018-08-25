@@ -12,3 +12,4 @@ var d = a ? 10 : function f(arr , v) {
 }([1,2,3],0)
 
 console.log(d);
+
