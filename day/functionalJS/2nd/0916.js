@@ -111,4 +111,3 @@ _.each = bloop(function (v) {
 //     }
 // )
 
-bloop([5,6,7]);
