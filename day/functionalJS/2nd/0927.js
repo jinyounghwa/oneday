@@ -146,34 +146,60 @@ _.reduce(users, function (info, user) {
     info.count[group] = (info.count[group] || 0) + user.age;
     return info;
 }, {count:{}, total:{}});
-
-function bloop(new_data, body, stopper, is_reduce) {
-    return function (data, iter_predi, opt1) {
-        iter_predi = iter_predi || _.idtt
-        var result = new_data(data);
-        var memo = is_reduce ? opt1 : undefined
-
-        if(isArrayLike(data)) {
-            for(var i = 0, len = data.length; i < len; i++) {
-                memo = is_reduce ?
-                    iter_predi(memo, data[i], i, data) :
-                    iter_predi(data[i], i, data);
-                    if(!stopper) body(memo, result, data[i], i);
-                    else if (stopper(memo)) return body(memo, result, data[i], i);
-            }
-        }else {
-            for (var i =0, keys = _.keys(data), len = keys.length; i < len ; i++) {
-                memo =  is_reduce ?
-                iter_predi(memo, data[keys[i]], keys[i], data) :
-                iter_predi(data[keys[i]], keys[i], data);
-                if(!stopper) body(memo, result, data[i], i);
-                else if (stopper(memo)) return body(memo, result, data[i], i);
-            }
-        }
-        return is_reduce ? memo : result;
-    }
-}
+//0929 3.4.5 이전
+// function bloop(new_data, body, stopper, is_reduce) {
+//     return function (data, iter_predi, opt1) {
+//         iter_predi = iter_predi || _.idtt
+//         var result = new_data(data);
+//         var memo = is_reduce ? opt1 : undefined
+//
+//         if(isArrayLike(data)) {
+//             for(var i = 0, len = data.length; i < len; i++) {
+//                 memo = is_reduce ?
+//                     iter_predi(memo, data[i], i, data) :
+//                     iter_predi(data[i], i, data);
+//                     if(!stopper) body(memo, result, data[i], i);
+//                     else if (stopper(memo)) return body(memo, result, data[i], i);
+//             }
+//         }else {
+//             for (var i =0, keys = _.keys(data), len = keys.length; i < len ; i++) {
+//                 memo =  is_reduce ?
+//                 iter_predi(memo, data[keys[i]], keys[i], data) :
+//                 iter_predi(data[keys[i]], keys[i], data);
+//                 if(!stopper) body(memo, result, data[i], i);
+//                 else if (stopper(memo)) return body(memo, result, data[i], i);
+//             }
+//         }
+//         return is_reduce ? memo : result;
+//     }
+// }
 // _.reduce(users, function(names, users){
 //     if(users.age > 30) names.push(users.name);
 //     return names;
 // },[]);
+
+function bloop(new_data, body, stooper, is_reduce) {
+    return function (data, iter_predi, opt1) {
+        iter_predi = iter_predi || _idtt;
+        var result = new_data(data);
+        var memo = is_reduce ? opt1 : undefined;
+        var limiter = is_reduce ? undefined : opt1;
+        var keys = isArrayLike(data) ? null : _.keys(data);
+        for(var i = 0, len = (keys || data).length; i < len; i++) {
+            var key = keys ? keys[i] : i;
+            memo = is_reduce ?
+                iter_predi(memo, data[key], key, data) :
+                iter_predi(data[key], key, data);
+            if(!stooper) body(memo, result, data[key], key);
+            else if (stooper(memo)) return body(memo, result, data[key], key);
+            if(limiter && limiter == result.length) break;
+        }
+        return is_reduce ? memo : result;
+    }
+}
+_.reduce = bloop(_.noop, _.noop, undefined, true);
+_.each = bloop(_.identity, _.noop);
+
+_.reduce([1,2,3], function (memo, val) {
+    return memo + val;
+},0)
