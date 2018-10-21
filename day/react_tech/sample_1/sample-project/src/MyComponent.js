@@ -14,6 +14,9 @@ class MyComponent extends Component {
         name : PropTypes.string,
         age : PropTypes.number.isRequired
     }
+    state = {
+        number:0
+    }
     render() {
         return(
             <div>
