@@ -17,10 +17,27 @@ class IterationSample extends Component {
             name : ''
         });
     }
+    handleRemove = (index) => {
+        const {names} = this.state;
+        /*전개 연산자를 사용 index번째 값을 제외한 값을 배열에 넣는다 */
+        this.setState({
+            // names : [
+            //     ...names.slice(0,index),
+            //     ...names.slice(index + 1, names.length)
+            // ]
+            names : names.filter((item, i) => i !== index)
+        });
+    }
     render(){
         const nameList = this.state.names.map(
-            (name, index) => (<li key={index}>{name}</li>)
-        );
+            (name, index) => (
+                <li
+                key={index}
+                onDoubleClick={()=> this.handleRemove(index)}
+                
+                >{name}</li>
+            )
+        )
         return(
             <div>
                 <input 
