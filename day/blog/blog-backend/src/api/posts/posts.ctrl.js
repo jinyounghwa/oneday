@@ -128,4 +128,4 @@ exports.update = (ctx) => {
     ...ctx.request.body
   };
   ctx.body = posts[index];
-};
+}; 
