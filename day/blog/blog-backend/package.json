@@ -9,6 +9,7 @@
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
+    "lodash": ">=4.17.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0"
