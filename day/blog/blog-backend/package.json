@@ -4,11 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "acorn": ">=5.7.4",
+    "hosted-git-info": "^4.0.2",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "minimist": ">=0.2.1",
-    "acorn": ">=5.7.4"
+    "minimist": ">=0.2.1"
   },
   "devDependencies": {
     "lodash": ">=4.17.21",
