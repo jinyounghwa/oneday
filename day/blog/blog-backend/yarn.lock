@@ -167,11 +167,9 @@ confusing-browser-globals@^1.0.10:
   version "1.0.11"
   resolved "https://registry.npmjs.org/confusing-browser-globals/-/confusing-browser-globals-1.0.11.tgz"
 
-content-disposition@~0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.4.tgz#8b82b4efac82512a02bb0b1dcec9d2c5e8eb5bfe"
-  dependencies:
-    safe-buffer "5.2.1"
+content-disposition@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-1.0.1.tgz#a8b7bbeb2904befdfb6787e5c0c086959f605f9b"
 
 content-type@^1.0.5:
   version "1.0.5"
@@ -876,12 +874,12 @@ koa-router@^7.4.0:
     path-to-regexp "^1.1.1"
     urijs "^1.19.0"
 
-koa@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/koa/-/koa-3.0.3.tgz#40a97b6da0c0d49a704af82db2b3e5a618ed9042"
+koa@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/koa/-/koa-3.1.2.tgz#f680316351ba23a652b50405d0be03b6161e4c0b"
   dependencies:
     accepts "^1.3.8"
-    content-disposition "~0.5.4"
+    content-disposition "~1.0.1"
     content-type "^1.0.5"
     cookies "~0.9.1"
     delegates "^1.0.0"
@@ -1153,10 +1151,6 @@ rimraf@^3.0.2:
   resolved "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz"
   dependencies:
     glob "^7.1.3"
-
-safe-buffer@5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
 
 "safer-buffer@>= 2.1.2 < 3":
   version "2.1.2"
